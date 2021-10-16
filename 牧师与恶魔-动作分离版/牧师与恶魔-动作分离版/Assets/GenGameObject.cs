@@ -22,8 +22,8 @@ public class GenGameObject : MonoBehaviour
 	Vector3 shoreStartPos = new Vector3(0, 0, -12);
 	Vector3 shoreEndPos = new Vector3(0, 0, 12);
 	Vector3 riverPos = new Vector3(0, -1, 0);
-	Vector3 boatStartPos = new Vector3(0, 0, -5);
-	Vector3 boatEndPos = new Vector3(0, 0, 5);
+	public Vector3 boatStartPos = new Vector3(0, 0, -5);
+	public Vector3 boatEndPos = new Vector3(0, 0, 5);
 	float gap = 1.5f;
 	Vector3 priestStartPos = new Vector3(0, 2f, -11f);
 	Vector3 priestEndPos = new Vector3(0, 2f, 8f);
@@ -70,64 +70,11 @@ public class GenGameObject : MonoBehaviour
 		}
 		return capacity;
 	}
-	void check()
-	{
-		int pOnb = 0, dOnb = 0;
-		int priests_s = 0, devils_s = 0, priests_e = 0, devils_e = 0;
-
-		if (priests_end.Count == 3 && devils_end.Count == 3)
-		{
-			my.state = State.WIN;
-			return;
-		}
-
-		for (int i = 0; i < 2; ++i)
-		{
-			if (boat[i] != null && boat[i].tag == "Priest") pOnb++;
-			else if (boat[i] != null && boat[i].tag == "Devil") dOnb++;
-		}
-		if (my.state == State.BSTART)
-		{
-			priests_s = priests_start.Count + pOnb;
-			devils_s = devils_start.Count + dOnb;
-			priests_e = priests_end.Count;
-			devils_e = devils_end.Count;
-		}
-		else if (my.state == State.BEND)
-		{
-			priests_s = priests_start.Count;
-			devils_s = devils_start.Count;
-			priests_e = priests_end.Count + pOnb;
-			devils_e = devils_end.Count + dOnb;
-		}
-		if ((priests_s != 0 && priests_s < devils_s) || (priests_e != 0 && priests_e < devils_e))
-		{
-			my.state = State.LOSE;
-		}
-	}
 	void Update()
 	{
 		setCharacterPositions(priests_start, priestStartPos);
 		setCharacterPositions(priests_end, priestEndPos);
 		setCharacterPositions(devils_start, devilStartPos);
 		setCharacterPositions(devils_end, devilEndPos);
-
-		if (my.state == State.BSEMOVING)
-		{
-			boat_obj.transform.position = Vector3.MoveTowards(boat_obj.transform.position, boatEndPos, speed * Time.deltaTime);
-			if (boat_obj.transform.position == boatEndPos)
-			{
-				my.state = State.BEND;
-			}
-		}
-		else if (my.state == State.BESMOVING)
-		{
-			boat_obj.transform.position = Vector3.MoveTowards(boat_obj.transform.position, boatStartPos, speed * Time.deltaTime);
-			if (boat_obj.transform.position == boatStartPos)
-			{
-				my.state = State.BSTART;
-			}
-		}
-		else check();
 	}
 }

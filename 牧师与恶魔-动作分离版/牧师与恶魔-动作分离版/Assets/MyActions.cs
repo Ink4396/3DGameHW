@@ -12,7 +12,7 @@ public class MyActions : MonoBehaviour
 		my = GameSceneController.GetInstance();
 		my.setMyActions(this);
 	}
-	//动作部分
+	//动作部分（与上次作业基本一致）
 	public void getOnTheBoat(GenGameObject gobj, GameObject obj)
 	{
 		if (gobj.boatCapacity() != 0)

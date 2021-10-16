@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
+  - component: {fileID: 963194233}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -338,4 +340,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0401708f5813cf4da239a3ec8d23a1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boat:
+  - {fileID: 0}
+  - {fileID: 0}
+  boat_obj: {fileID: 0}
   speed: 100
+  boatStartPos: {x: 0, y: 0, z: -5}
+  boatEndPos: {x: 0, y: 0, z: 5}
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e5c3fb0a6083943a7dd70bd37f42cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &963194233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534fc7421e6439d469a6f441bd7a65fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
